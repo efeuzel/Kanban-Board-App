@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("api/project")
@@ -35,4 +36,17 @@ public class ProjectController {
         Project project = projectService.findProjectByIdentifier(projectIdentifier);
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects() {
+        return projectService.findAllProjects();
+    }
+
+    @DeleteMapping("/{projectIdentifier}")
+    public ResponseEntity<?> deleteProject(@PathVariable String projectIdentifier) {
+
+        projectService.deleteProjectByIdentifier(projectIdentifier);
+        return new ResponseEntity<>(projectIdentifier + " is deleted", HttpStatus.OK);
+    }
+
 }

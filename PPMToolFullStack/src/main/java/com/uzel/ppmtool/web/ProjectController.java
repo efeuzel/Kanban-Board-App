@@ -14,6 +14,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("api/project")
+@CrossOrigin
 public class ProjectController {
 
     @Autowired

@@ -84,7 +84,11 @@ class AddProject extends Component {
                       value={this.state.projectIdentifier}
                       onChange={this.onChange}
                     />
-                    <p>{errors.projectIdentifier}</p>
+                    {errors.projectIdentifier && (
+                      <div className="invalid-feedback">
+                        {errors.projectIdentifier}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <textarea
@@ -96,13 +100,20 @@ class AddProject extends Component {
                       value={this.state.description}
                       onChange={this.onChange}
                     />
-                    <p>{errors.description}</p>
+                    {errors.description && (
+                      <div className="invalid-feedback">
+                        {errors.description}
+                      </div>
+                    )}
                   </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
                       className="form-control form-control-lg"
+                      name="start_date"
+                      value={this.state.start_date}
+                      onChange={this.onChange}
                     />
                   </div>
                   <h6>Estimated End Date</h6>
